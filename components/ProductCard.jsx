@@ -4,7 +4,7 @@ import { useCart } from "../context/CartContext";
 import { getProducts } from "../services/strapiApi";
 import { useEffect, useState } from "react";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://2e4a-190-12-13-23.ngrok-free.app";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const ProductCard = () => {
   const { addToCart } = useCart();
@@ -14,11 +14,9 @@ const ProductCard = () => {
     async function fetchProducts() {
       try {
         const data = await getProducts();
-        const text = await data.text();
-        console.log('Respuesta recibida:', text)
         setProducts(data?.data || []);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error("Error fetching:", error);
       }
     }
 
