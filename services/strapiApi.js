@@ -14,7 +14,7 @@ export async function fetchFromStrapi(endpoint, params = {}) {
   ? `${STRAPI_URL}/api/${endpoint}?${queryString}`
   : `${STRAPI_URL}/api/${endpoint}`;
 
-  console.log("Fetching from:", url);
+  // console.log("Fetching from:", url);
 
   const res = await fetch(url);
   if (!res.ok) {
